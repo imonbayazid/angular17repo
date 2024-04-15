@@ -1,14 +1,15 @@
 
 
 <main class="main">
-  <div class="content">
+  <div >
   
     <h1>Angular 17 test application</h1>
-    <li *ngFor="let m of movies" >
+    <li *ngFor="let m of movies" (click)="showModalDialog(m.title,m.overview)">
       <p [ngClass]="{'list-item ': m.original_language==='en', 'list-item2': m.original_language !='en'}">{{m.title}} </p>
       <p>{{m.overview}} </p>
     </li>
   </div>
+  <app-modal-component  *ngIf="showModal" [model_title]="modalTitle" [model_description]="modalDescription" (confirmClicked)="onConfirm($event)"></app-modal-component>
 </main>
 
 
